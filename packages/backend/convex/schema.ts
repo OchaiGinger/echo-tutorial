@@ -4,4 +4,5 @@ export default defineSchema({
   users: defineTable({
     name: v.string(),
   }),
+
 });
