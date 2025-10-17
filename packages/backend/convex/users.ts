@@ -1,4 +1,4 @@
-import {query, mutation } from './_generated/server';
+import { query, mutation } from './_generated/server';
 
 export const getMany = query({
     args: {},
@@ -6,15 +6,21 @@ export const getMany = query({
         const users = await ctx.db.query('users').collect();
         return users;
     },
-}); 
+});
 
 export const add = mutation({
     args: {},
-    handler: async (ctx, ) =>{
+    handler: async (ctx,) => {
         const identity = await ctx.auth.getUserIdentity()
 
-        if(identity == null) {
+        if (identity == null) {
             throw new Error("Not authenticated")
+        }
+
+        const orgId = identity.orgId as string
+
+        if (!orgId) {
+            throw new Error("No organization ID found")
         }
 
         const userId = await ctx.db.insert('users', {
@@ -26,10 +32,10 @@ export const add = mutation({
 
 export const del = mutation({
     args: {},
-    handler: async (ctx) =>{
-        const firstUser = await ctx.db.query('users').first()   
+    handler: async (ctx) => {
+        const firstUser = await ctx.db.query('users').first()
         if (firstUser) {
-            await ctx.db.delete(firstUser._id)  
+            await ctx.db.delete(firstUser._id)
         }
     }
 })
