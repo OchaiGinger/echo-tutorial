@@ -12,8 +12,19 @@ export const add = mutation({
     args: {},
     handler: async (ctx, ) =>{
         const userId = await ctx.db.insert('users', {
-            name: "hello"
+            name: "Ginger Ochai"
         })
         return userId
     },
 })
+
+export const del = mutation({
+    args: {},
+    handler: async (ctx) =>{
+        const firstUser = await ctx.db.query('users').first()   
+        if (firstUser) {
+            await ctx.db.delete(firstUser._id)  
+        }
+    }
+})
+

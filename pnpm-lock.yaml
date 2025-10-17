@@ -75,15 +75,15 @@ importers:
 
   apps/widget:
     dependencies:
+      '@workspace/backend':
+        specifier: workspace:*
+        version: link:../../packages/backend
       '@workspace/math':
         specifier: workspace:*
         version: link:../../packages/math
       '@workspace/ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      convex:
-        specifier: ^1.27.3
-        version: 1.27.3(react@19.1.1)
       lucide-react:
         specifier: ^0.475.0
         version: 0.475.0(react@19.1.1)
@@ -125,6 +125,9 @@ importers:
         specifier: ^1.27.3
         version: 1.27.3(react@19.1.1)
     devDependencies:
+      '@types/node':
+        specifier: ^20.19.9
+        version: 20.19.9
       typescript:
         specifier: latest
         version: 5.9.3
@@ -132,8 +135,8 @@ importers:
   packages/eslint-config:
     devDependencies:
       '@eslint/js':
-        specifier: ^9.37.0
-        version: 9.37.0
+        specifier: 9.32.0
+        version: 9.32.0
       '@next/eslint-plugin-next':
         specifier: ^15.4.5
         version: 15.4.5
@@ -442,10 +445,6 @@ packages:
 
   '@eslint/js@9.32.0':
     resolution: {integrity: sha512-BBpRFZK3eX6uMLKz8WxFOBIFFcGFJ/g8XuwjTHCqHROSIsopI+ddn/d5Cfh36+7+e5edVS8dbSHnBNhrLEX0zg==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@eslint/js@9.37.0':
-    resolution: {integrity: sha512-jaS+NJ+hximswBG6pjNX0uEJZkrT0zwpVi3BA3vX22aFGjJjmgSTSmPpZCRKmoBL5VY/M6p0xsSJx7rk7sy5gg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@eslint/object-schema@2.1.6':
@@ -2795,8 +2794,6 @@ snapshots:
       - supports-color
 
   '@eslint/js@9.32.0': {}
-
-  '@eslint/js@9.37.0': {}
 
   '@eslint/object-schema@2.1.6': {}
 
